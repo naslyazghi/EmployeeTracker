@@ -1,0 +1,53 @@
+﻿@page "/"
+@using EmployeeTrackerTest
+@namespace BrandingTemplate.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrandingTemplate</title>
+    <base href="~/" />
+    @Html.Raw(JavaScriptSnippet.FullScript)
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="_content/Blazored.Toast/blazored-toast.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="EmployeeTrackerTest.styles.css" rel="stylesheet" />
+
+    <!-- fav and touch icons -->
+    <link rel="shortcut icon" href="~/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/images/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/images/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/images/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="~/images/apple-touch-icon-57-precomposed.png">
+</head>
+<body>
+    <component type="typeof(App)" render-mode="ServerPrerendered" />
+
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            An error has occurred. This application may no longer respond until reloaded.
+        </environment>
+        <environment include="Development">
+            An unhandled exception has occurred. See browser dev tools for details.
+        </environment>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script type="text/javascript">
+        if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+            //https://github.com/Daddoon/Blazor.Polyfill
+            document.write('<script src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.closest%2CIntersectionObserver%2Cdocument.querySelector%2Cfeatures=Array.prototype.forEach%2CNodeList.prototype.forEach"><\/script>');
+            document.write('<script src="scripts/blazor.polyfill.min.js"><\/script>');
+        }
+    </script>
+
+    <script src="_framework/blazor.server.js"></script>
+</body>
+</html>
