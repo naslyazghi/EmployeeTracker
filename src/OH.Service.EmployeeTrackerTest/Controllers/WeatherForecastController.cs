@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace OH.Service.EmployeeTrackerTest.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase

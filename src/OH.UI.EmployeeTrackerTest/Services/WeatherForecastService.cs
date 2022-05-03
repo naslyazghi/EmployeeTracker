@@ -12,24 +12,21 @@ namespace OH.UI.EmployeeTrackerTest.Services
 {
     public class WeatherForecastService : IWeatherForecastService
     {
-        private readonly IDownstreamWebApi _downstreamWebApi;
+        private HttpClient client = new HttpClient();
 
-        public WeatherForecastService(IDownstreamWebApi downstreamWebApi)
+        public WeatherForecastService()
         {
-            _downstreamWebApi = downstreamWebApi;
+         
         }
 
         public async Task<(List<WeatherForecast> WeatherForecastList, string ErrorMessage)> GetWeatherForecastsync()
         {
-            const string endPointAddress = "WeatherForecast";
+            const string endPointAddress = "https://localhost:5002/WeatherForecast";
 
-            var response = await _downstreamWebApi.CallWebApiForAppAsync(
-                "ServiceLineManager",
-                options =>
-                {
-                    options.HttpMethod = HttpMethod.Get;
-                    options.RelativePath = $"{endPointAddress}";
-                }).ConfigureAwait(true);
+            var response = await client.GetAsync(endPointAddress).ConfigureAwait(true);
+
+
+              
 
 
             if (!response.IsSuccessStatusCode)
