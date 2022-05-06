@@ -11,21 +11,21 @@ namespace OH.UI.EmployeeTrackerTest.Helpers
 {
     public class WeatherForecastHelper : IWeatherForecastHelper
     {
-        protected readonly IWeatherForecastService WeatherForecastService;
+        private readonly IWeatherForecastService _weatherForecastService;
 
         public WeatherForecastHelper(IWeatherForecastService weatherForecastService)
         {
-            WeatherForecastService = weatherForecastService;
+            _weatherForecastService = weatherForecastService;
         }
 
         public async Task<(List<WeatherForecastViewModel> WeatherForecastList, string ErrorMessage)> GetRandomWeatherForecastAsync()
         {
-            return await WeatherForecastService.GetRandomWeatherForecastAsync();
+            return await _weatherForecastService.GetRandomWeatherForecastAsync();
         }
 
         public async Task<(List<WeatherForecastViewModel> WeatherForecastList, string ErrorMessage)> GetWeatherForecastAsync()
         {
-            return await WeatherForecastService.GetWeatherForecastAsync().ConfigureAwait(true);
+            return await _weatherForecastService.GetWeatherForecastAsync().ConfigureAwait(true);
         }
     }
 }

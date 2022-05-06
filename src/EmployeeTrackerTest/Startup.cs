@@ -1,21 +1,12 @@
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.Identity.Web;
-using Microsoft.Identity.Web.UI;
-using System.IO;
 using Blazored.LocalStorage;
 using Blazored.Toast;
-using Microsoft.AspNetCore.Http;
 using OH.UI.EmployeeTrackerTest.Helpers;
 using OH.UI.EmployeeTrackerTest.Services;
 using Microsoft.Net.Http.Headers;
@@ -36,28 +27,22 @@ namespace EmployeeTrackerTest
         public void ConfigureServices(IServiceCollection services)
         {
 
-
             services.AddHttpClient("EmployeeTrackerTestApi", httpClient =>
             {
                 httpClient.BaseAddress = new Uri("https://localhost:5002/api/");
-
                 httpClient.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
                 httpClient.DefaultRequestHeaders.Add(HeaderNames.UserAgent, "EmployeeTrackerTest");
             });
 
             services.AddScoped<IWeatherForecastHelper, WeatherForecastHelper>();
             services.AddScoped<IWeatherForecastService, WeatherForecastService>();
-
-
             services.AddRazorPages();
-                
             services.AddBlazoredLocalStorage();
             services.AddBlazoredToast();
             services.AddAuthentication();
             services.AddServerSideBlazor()
                  .AddCircuitOptions(o =>
                  {
-                     
                      o.DetailedErrors = true;
                  })
                 .AddMicrosoftIdentityConsentHandler();
@@ -71,8 +56,6 @@ namespace EmployeeTrackerTest
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -83,16 +66,9 @@ namespace EmployeeTrackerTest
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-           
-
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();

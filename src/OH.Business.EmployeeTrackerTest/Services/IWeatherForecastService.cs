@@ -9,6 +9,6 @@ namespace OH.Business.EmployeeTrackerTest.Services
 {
     public interface IWeatherForecastService
     {
-        Task<IEnumerable<WeatherForecast>> GetWeatherForecastsync();
+        Task<IEnumerable<WeatherForecast>> GetWeatherForecastAsync();
     }
 }

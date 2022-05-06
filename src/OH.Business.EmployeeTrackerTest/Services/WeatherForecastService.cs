@@ -18,7 +18,7 @@ namespace OH.Business.EmployeeTrackerTest.Services
         }
                 
         //TODO: -- OH Implementation Note -- See notes about EFCore known async limitations with SQLite
-        public async Task<IEnumerable<WeatherForecast>> GetWeatherForecastsync()
+        public async Task<IEnumerable<WeatherForecast>> GetWeatherForecastAsync()
         {
             var list = _context.WeatherForecast.ToList();
 

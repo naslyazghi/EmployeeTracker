@@ -1,5 +1,6 @@
 ﻿
 using System.Threading.Tasks;
+using System.Timers;
 using Blazored.LocalStorage;
 using Blazored.Toast.Services;
 using Microsoft.AspNetCore.Components;
@@ -46,9 +47,22 @@ namespace EmployeeTrackerTest.Pages
         {
             ShowWaitState("Test Title", "Test Wait Message");
             StateHasChanged();
+            var aTimer = new Timer(2000);
+            // Hook up the Elapsed event for the timer. 
+            aTimer.Elapsed += OnTimedEvent;
+            aTimer.AutoReset = true;
+            aTimer.Enabled = true;
         }
 
+        private void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            HideWaitState();
+            InvokeAsync(() =>
+            {
+                StateHasChanged();
+            });
 
+        }
 
         protected void ShowConfirmDialog()
         {

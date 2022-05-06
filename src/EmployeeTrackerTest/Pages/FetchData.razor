@@ -1,10 +1,5 @@
 ﻿@page "/fetchdata"
 
-@using OH.Common.EmployeeTrackerTest.Models
-@using OH.Common.EmployeeTrackerTest.ViewModels
-@using OH.UI.EmployeeTrackerTest.Helpers
-@inject IWeatherForecastHelper WeatherForecastHelper
-
 <h1>Weather forecast</h1>
 
 <p>This component demonstrates fetching data from a service.</p>
@@ -15,7 +10,7 @@
 }
 else
 {
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Date</th>
@@ -38,12 +33,4 @@ else
     </table>
 }
 
-@code {
-    private List<WeatherForecastViewModel> _forecasts;
 
-    protected override async Task OnInitializedAsync()
-    {
-        var (forecasts, errorMessage) = await WeatherForecastHelper.GetRandomWeatherForecastAsync();
-        _forecasts = forecasts;
-    }
-}

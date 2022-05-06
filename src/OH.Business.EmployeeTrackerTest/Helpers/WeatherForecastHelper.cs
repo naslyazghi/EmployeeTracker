@@ -11,7 +11,7 @@ namespace OH.Business.EmployeeTrackerTest.Helpers
 {
     public class WeatherForecastHelper : IWeatherForecastHelper
     {
-        readonly IWeatherForecastService _weatherForecastService;
+        private readonly IWeatherForecastService _weatherForecastService;
 
         public WeatherForecastHelper(IWeatherForecastService weatherForecastService)
         {
@@ -20,7 +20,7 @@ namespace OH.Business.EmployeeTrackerTest.Helpers
 
         public async Task<IEnumerable<WeatherForecastViewModel>> GetWeatherForecastAsync()
         {
-            return (await _weatherForecastService.GetWeatherForecastsync())
+            return (await _weatherForecastService.GetWeatherForecastAsync())
                 .Select(e => new WeatherForecastViewModel() 
                 { 
                     Date = DateTime.Parse(e.Date),

@@ -95,6 +95,9 @@ a, .btn-link {
     height: 140px;
     margin-top: 45vh;
     text-align: center !important;
+    -webkit-box-shadow: 10px 11px 5px -9px rgba(0,0,0,0.66);
+    -moz-box-shadow: 10px 11px 5px -9px rgba(0,0,0,0.66);
+    box-shadow: 10px 11px 5px -9px rgba(0,0,0,0.66);
 }
 
 .spinner {

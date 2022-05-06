@@ -19,6 +19,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C325BDC0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OH.Tests.EmployeeTrackerTest", "Tests\OH.Tests.EmployeeTrackerTest\OH.Tests.EmployeeTrackerTest.csproj", "{EFB9EBF0-CB0E-4BC2-ABF4-1572ECD82CA5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{44593637-40E5-4744-80DF-5A23E41D9C60}"
+	ProjectSection(SolutionItems) = preProject
+		database\EmployeeTrackerTest.db = database\EmployeeTrackerTest.db
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
