@@ -1,8 +1,12 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace OH.Service.EmployeeTrackerTest
+namespace OH.Common.EmployeeTrackerTest.ViewModels
 {
-    public class WeatherForecast
+    public class WeatherForecastViewModel
     {
         public DateTime Date { get; set; }
 

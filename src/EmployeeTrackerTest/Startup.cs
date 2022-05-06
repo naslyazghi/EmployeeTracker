@@ -16,8 +16,9 @@ using System.IO;
 using Blazored.LocalStorage;
 using Blazored.Toast;
 using Microsoft.AspNetCore.Http;
-using OH.UI.EmployeeTrackerTest.Helper;
+using OH.UI.EmployeeTrackerTest.Helpers;
 using OH.UI.EmployeeTrackerTest.Services;
+using Microsoft.Net.Http.Headers;
 
 namespace EmployeeTrackerTest
 {
@@ -35,6 +36,14 @@ namespace EmployeeTrackerTest
         public void ConfigureServices(IServiceCollection services)
         {
 
+
+            services.AddHttpClient("EmployeeTrackerTestApi", httpClient =>
+            {
+                httpClient.BaseAddress = new Uri("https://localhost:5002/api/");
+
+                httpClient.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
+                httpClient.DefaultRequestHeaders.Add(HeaderNames.UserAgent, "EmployeeTrackerTest");
+            });
 
             services.AddScoped<IWeatherForecastHelper, WeatherForecastHelper>();
             services.AddScoped<IWeatherForecastService, WeatherForecastService>();

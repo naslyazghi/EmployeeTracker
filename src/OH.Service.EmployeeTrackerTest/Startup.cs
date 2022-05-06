@@ -12,29 +12,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Identity.Web;
+using OH.Business.EmployeeTrackerTest.Data;
+using Microsoft.EntityFrameworkCore;
+using OH.Business.EmployeeTrackerTest.Helpers;
+using OH.Business.EmployeeTrackerTest.Services;
 
 namespace OH.Service.EmployeeTrackerTest
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment webHostEnvironment)
         {
             Configuration = configuration;
+            WebHostEnvironment = webHostEnvironment;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment WebHostEnvironment { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        //TODO: -- OH Implementation Note -- Hardcoded local path for simplicity.
         public void ConfigureServices(IServiceCollection services)
         {
-          
+            var dbRelativeLocalPath = $"{WebHostEnvironment.ContentRootPath}\\..\\..\\database\\EmployeeTrackerTest.db";
 
-           
-
-
-
-
-          
+            services.AddDbContext<EmployeeTrackerTestDbContext>(options => options.UseSqlite($"DataSource={dbRelativeLocalPath}"))
+                .AddScoped<IWeatherForecastHelper, WeatherForecastHelper>()
+                .AddScoped<IWeatherForecastService, WeatherForecastService>()
+                ;
 
             services.AddControllers();
       

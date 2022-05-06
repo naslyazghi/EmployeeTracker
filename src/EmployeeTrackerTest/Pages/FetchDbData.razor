@@ -1,4 +1,4 @@
-﻿@page "/fetchdata"
+﻿@page "/dbfetchdata"
 
 @using OH.Common.EmployeeTrackerTest.Models
 @using OH.Common.EmployeeTrackerTest.ViewModels
@@ -7,7 +7,7 @@
 
 <h1>Weather forecast</h1>
 
-<p>This component demonstrates fetching data from a service.</p>
+<p>This component demonstrates fetching data from a service connected to a SQLite database.</p>
 
 @if (_forecasts == null)
 {
@@ -43,7 +43,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        var (forecasts, errorMessage) = await WeatherForecastHelper.GetRandomWeatherForecastAsync();
+        var (forecasts, errorMessage) = await WeatherForecastHelper.GetWeatherForecastAsync();
         _forecasts = forecasts;
     }
 }
